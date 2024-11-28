@@ -14,10 +14,6 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "partner_id", nullable = false)
-    private Partner partner;
-
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
 
@@ -29,29 +25,22 @@ public class Message {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public Partner getPartner() {
-        return partner;
-    }
-
-    // Setters
-    public void setPartner(Partner partner) {
-        this.partner = partner;
-    }
-
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
-
     public LocalDateTime getReceivedAt() {
         return receivedAt;
+    }
+
+
+    // Setters
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public void setReceivedAt(LocalDateTime receivedAt) {
